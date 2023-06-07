@@ -53,29 +53,12 @@ def bsearch(array, target)
 end
 
 def merge_sort(array)
-    merge_helper(arr1, arr2) if array.length == 1
-
-
+    return array if array.length <= 1
+    n = array.length / 2
+    array1 = array[0...n] 
+    array2 = array[n..- 1]
+    merge_helper( merge_sort(array1), merge_sort(array2))
 end
-
-# def merge_helper(arr1, arr2)
-#     results = []
-#     (0...arr1.length).each do |n|
-#         if arr2[n] != nil
-#             if arr1[n] < arr2[n]
-#                 results << arr1[n]
-#                 results << arr2[n]
-#             else
-#                 results << arr2[n]
-#                 results << arr1[n]
-#             end
-#         else
-#             results << arr1[n]
-#         end
-        
-#     end
-#     results
-# end
 
 
 def merge_helper(arr1, arr2)
@@ -83,11 +66,9 @@ def merge_helper(arr1, arr2)
     until arr1.length == 0 && arr2.length == 0 
         if arr1.length == 0
             results << arr2.shift
-        elsif
-            arr2.length == 0
-            results << arr2.shift
-        elsif
-            arr1[0] < arr2[0]
+        elsif arr2.length == 0
+            results << arr1.shift
+        elsif arr1[0] < arr2[0]
             results << arr1.shift
         else
             results << arr2.shift
@@ -96,22 +77,7 @@ def merge_helper(arr1, arr2)
     results
 end
 
-p merge_helper([3, 27, 38, 43], [9, 10, 82])
-# def merge_helper(arr1, arr2)
-#     results = []
-#     (0...arr1.length).each do |n|
-#         if arr2[n] == nil
-#             results << arr1[n]
-#         else
-#             if arr1[n] < arr2[n]
-#                 results << arr1[n]
-#                 results << arr2[n]
-#             else
-#                 results << arr2[n]
-#                 results << arr1[n]
-#             end
-#         end
-        
-#     end
-#     results
-# end
+p merge_sort([38, 27, 43, 3, 9, 82, 10])
+
+#p merge_helper([3, 27, 38, 43], [9, 10, 82])
+
