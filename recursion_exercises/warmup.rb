@@ -58,26 +58,45 @@ def merge_sort(array)
 
 end
 
+# def merge_helper(arr1, arr2)
+#     results = []
+#     (0...arr1.length).each do |n|
+#         if arr2[n] != nil
+#             if arr1[n] < arr2[n]
+#                 results << arr1[n]
+#                 results << arr2[n]
+#             else
+#                 results << arr2[n]
+#                 results << arr1[n]
+#             end
+#         else
+#             results << arr1[n]
+#         end
+        
+#     end
+#     results
+# end
+
+
 def merge_helper(arr1, arr2)
     results = []
-    (0...arr1.length).each do |n|
-        if arr2[n] != nil
-            if arr1[n] < arr2[n]
-                results << arr1[n]
-                results << arr2[n]
-            else
-                results << arr2[n]
-                results << arr1[n]
-            end
+    until arr1.length == 0 && arr2.length == 0 
+        if arr1.length == 0
+            results << arr2.shift
+        elsif
+            arr2.length == 0
+            results << arr2.shift
+        elsif
+            arr1[0] < arr2[0]
+            results << arr1.shift
         else
-            results << arr1[n]
+            results << arr2.shift
         end
-        
     end
     results
 end
 
-p merge_helper([3, 27 ], [82])
+p merge_helper([3, 27, 38, 43], [9, 10, 82])
 # def merge_helper(arr1, arr2)
 #     results = []
 #     (0...arr1.length).each do |n|
