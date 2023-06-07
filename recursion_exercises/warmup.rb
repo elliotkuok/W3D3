@@ -36,22 +36,63 @@ def fibonacci(n)
 end
 
 def bsearch(array, target)
-    return 'not found' if array.length == 0
+
+    return nil if array.length == 0
     idx = array.length / 2
     return idx if array[idx] == target
     if target < array[idx]
         bsearch(array[0...idx], target)
     else
-        bsearch(array[idx + 1..-1], target)
+        if bsearch(array[idx + 1..-1], target) == nil
+            nil
+        else    
+            idx + 1 + bsearch(array[idx + 1..-1], target)
+        end
     end
-    
     
 end
 
-p bsearch([1, 2, 3], 1) # => 0
-p bsearch([2, 3, 4, 5], 3) # => 1
-p bsearch([2, 4, 6, 8, 10], 6) # => 2
-p bsearch([1, 3, 4, 5, 9], 5) # => 3
-p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
-p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
-p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+def merge_sort(array)
+    merge_helper(arr1, arr2) if array.length == 1
+
+
+end
+
+def merge_helper(arr1, arr2)
+    results = []
+    (0...arr1.length).each do |n|
+        if arr2[n] != nil
+            if arr1[n] < arr2[n]
+                results << arr1[n]
+                results << arr2[n]
+            else
+                results << arr2[n]
+                results << arr1[n]
+            end
+        else
+            results << arr1[n]
+        end
+        
+    end
+    results
+end
+
+p merge_helper([3, 27 ], [82])
+# def merge_helper(arr1, arr2)
+#     results = []
+#     (0...arr1.length).each do |n|
+#         if arr2[n] == nil
+#             results << arr1[n]
+#         else
+#             if arr1[n] < arr2[n]
+#                 results << arr1[n]
+#                 results << arr2[n]
+#             else
+#                 results << arr2[n]
+#                 results << arr1[n]
+#             end
+#         end
+        
+#     end
+#     results
+# end
