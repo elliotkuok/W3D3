@@ -77,7 +77,17 @@ def merge_helper(arr1, arr2)
     results
 end
 
-p merge_sort([38, 27, 43, 3, 9, 82, 10])
+def subsets(arr)
+    
+    return [[]] if arr.empty?
+    previous_arr = subsets(arr[0...-1]) 
+    new_subsets = previous_arr.map  { |subset| subset + [arr.last] }
 
-#p merge_helper([3, 27, 38, 43], [9, 10, 82])
+    previous_arr + new_subsets
+end
 
+
+p subsets([]) # => [[]]
+p subsets([1]) # => [[], [1]]
+p subsets([1, 2]) # => [[], [1], [2], [1, 2]]
+p subsets([1, 2, 3]) # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
